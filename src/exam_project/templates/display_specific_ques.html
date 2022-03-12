@@ -1,0 +1,48 @@
+{% extends "header_for_question.html" %}
+{% block content %}
+
+
+{% for values in questions_content %}
+        <div align='center' width="50%"">
+            <p><div style="color:red">Question number {{question_no}}:</div><br>{{values.question_desc}}</a></p>
+            {% if values.ref_image %} <img src= {{ values.ref_image.url }} >{% endif %}
+        </div>
+ {% endfor %}
+ 
+ <form method="POST" align='center'> {%csrf_token%}
+    {% for values in answer_choices %}
+  
+<!-- this is for multiple choices question. styles = 1 is multiple choices-->
+        {% if questions_content.0.styles == '1' %}
+            <fieldset class="form-group"><div class="form-check"> <label class="form-check-label">{{values.answer_desc}}<input type="checkbox" class="form-check-input" value="{{ values.answer_id }}" name="myAnswer"  {% if values.answer_id|title in myAnswer|title  %} checked  {% endif %}></label></div></fieldset>
+        {% endif %}
+
+<!-- this is for multiple open text question. styles = 0 is open text question  -->
+        {% if questions_content.0.styles == '0' %}
+            {% if myAnswer_for_opentext %}
+                {% for values in myAnswer_for_opentext %}
+                        <div align='center'>
+                            <label class="container">Answer: </label><textarea name="myAnswer" rows="10" cols="80">{{ values.answer_for_opentext }}</textarea>
+                        </div><br>
+                {% endfor %}
+            {% else %}
+                        <div align='center'>
+                            <label class="container">Answer: </label><textarea name="myAnswer" rows="10" cols="80" placeholder="Please enter your answer here"></textarea>
+                        </div><br>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+<div align='center'><input type='submit' value='OK'></div>
+</form>
+
+{% endblock %}
+
+{% block message %}
+        {% if messages %}
+            <div class="alert alert-dismissible alert-danger" align="center"></div>
+                {% for message in messages %}
+                    <strong>{{ message }}</strong>
+                {% endfor %}
+            </div>  
+        {% endif %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "header.html" %}
+
+{% block content %}
+
+
+<main class="container">
+    <div class="align-items-center p-3 my-3 rounded shadow-sm text-center">
+             <div class="lh-1"><a href="/register">Do not have account yet. Register now</a></div>
+        </div>
+    </div>
+</main>
+
+<form method="POST" align='center'> {%csrf_token%}
+    {{form.as_p}}
+    
+        <input type='submit' value='Login now' />
+</form>
+
+<p>
+
+    {% endblock %}
+
+
+{% block message %}
+
+    {% if messages %}
+<ul class="messages" align="center">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+    {% endif %}
+
+{% endblock %}
+

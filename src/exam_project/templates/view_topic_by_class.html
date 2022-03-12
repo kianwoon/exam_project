@@ -1,0 +1,54 @@
+{% extends "header.html" %}
+{% block content %}
+
+<p>
+<main class="container" style="position:sticky;">
+    <div class="card text-white bg-primary mb-3" style="max-width: 100%;">
+        <div class="card-header">{{ class_desc }}</div>
+    </div>
+</main>
+
+
+    <main class="container" align='center' style="position:sticky;">
+        <div class="row" >
+    {% for values in topics %}
+                    <div class="column col-sm-12 col-md-6 col-lg-4 col-xl-4" align='center'>
+                      <div class="card border-success mb-3" style="max-width: 20rem; height: 200px;">
+                            <div class="card-header">{{values.topic_name}}</div>
+                                <div class="card-body d-flex flex-column">
+                                    <p class="card-text">{{ values.desc }} <a href="{{ values.get_absolute_url }}" style="text-decoration: underline;"> Find out more </a></p>
+                                </div>
+                        </div>
+                    </div>
+    {% endfor %}
+        </div>
+    </main>
+
+    
+<main class="jumbotron container" style="position:sticky; ">
+    <div class="card border-primary mb-3" ><div class="card-header">List of exercise(s) completed & result  </div></div>
+        <div class="row card-body" style="text-align:center">
+            {% for values in exercise_paper_list_completed %}
+                        <div class="column col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                          <a href="{% url 'exercise_result:list_exercise_result' id=values.exercise_id %}" > {{ values.topic_id }}  </a> - {{ values.result }}% <br>
+                          Date: {{ values.exercise_date }}  
+                        </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+
+{% endblock %}
+
+
+{% block message %}
+        {% if messages %}
+            <div class="alert alert-dismissible alert-danger" align="center"></div>
+                {% for message in messages %}
+                    <strong>{{ message }}</strong>
+                {% endfor %}
+            </div>  
+        {% endif %}
+{% endblock %}
+
+

@@ -1,0 +1,6 @@
+# my.cnf
+[client]
+database = 'examdb'
+USER = 'wong'
+password = 'W0ngk1anw00n'
+default-character-set= 'utf8'

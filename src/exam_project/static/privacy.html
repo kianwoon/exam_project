@@ -1,0 +1,183 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>k2Lab - Exam Center</title>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
+        <script src="http://192.168.1.154:8080/static/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <link rel="stylesheet" href="footer.css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" > 
+<!------ Include the above in your HEAD tag ---------->
+<style>
+    .topnav a:hover {
+        border-bottom: 2px solid red;
+    }
+    .full_container {
+
+        top: 0;
+        right: 0;
+        width: 100% !important;
+        left: 0;
+        z-index: 20;
+
+    }
+    .modal-backdrop {
+        /* bug fix - no overlay */    
+        display: none;    
+    }
+    .header-container, .body-container, .footer-container { 
+        max-width: 1080px; 
+        margin: 0 auto; 
+
+    }
+
+    body { 
+        max-width: 1080px; 
+        margin: 0 auto !important; 
+        float: none !important; 
+    }
+
+    /* Create four equal columns that floats next to each other */
+    .column {
+        float: left;
+        width: 33%;
+        padding: 5px;
+
+    }
+    
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+   
+
+</style>
+</head>
+
+<body>
+    <div class="container-fluid" " align='left'>
+
+        <p><strong>Privacy Policy</strong></p>
+        <p>This privacy policy explains how K2Lab manages personal data that is in compliance with the Singapore Personal Data Protection Act 2012 (PDPA).</p>
+        <p><strong>1. Types of Personal Data Collected by K2Lab </strong></p>
+        <p>Personal data is collected so that our staff can respond swiftly to your needs in a customised manner.  Examples of the personal data we collect include:</p>
+        <p>a) Personal information about you and your family members, which may include details like names, contact details, educational information, residential addresses or payment details</p>
+        <p>b) Information/data that has been generated throughout the course of any continual relationship with K2Lab, including class enrolments, transfers, withdrawals or other information provided by you during any form of communication</p>
+        <p>c) Information from cookies, social media and other technologies deployed for the analysis of website usage or other information technology applications used in the delivery or communication of services.</p>
+        <p><strong>2. Purpose of Collection, Usage and Disclosure of Personal Data</strong></p>
+        <p>The purposes for which K2Lab collects, uses or discloses personal data include:</p>
+        <p>a) Verification of identity</p>
+        <p>b) Discharging contractual obligations and better service which includes</p>
+        <p>i. Responding to, processing and handling of queries, requests, feedback and suggestions</p>
+        <p>ii. Managing the administrative and operational aspects of K2Lab and complying with internal policies and procedures</p>
+        <p>iii. Providing updates on upcoming workshops, seminars, events, product-related services and support, etc.</p>
+        <p>iv. Requesting feedback or participation in surveys, market research and/or analysis for statistical profiling or other purposes for us to design our products, understand customer behaviour, preference and market trends, and to review, develop and improve the quality of our products and services</p>
+        <p>v. Managing the safety and security of our premises and services (including but not limited to carrying out CCTV surveillance and conducting investigations)</p>
+        <p>vi. Marketing, branding, communications and corporate affairs purposes which include publication of K2Lab printed materials, social media, website and/or electronic media</p>
+        <p>c) Enforcing or defending the rights of K2Lab, its employees, officers and directors</p>
+        <p>d) Any other incidental business purposes that are related to or in connection with the above-mentioned.</p>
+        <p><strong>3. To Whom Your Personal Data May be Disclosed</strong></p>
+        <p>The personal data that we collect may be disclosed to the following parties for the purposes below:</p>
+        <p>a) To our full-time teachers and independent contract teachers for them to effectively discharge their teaching obligations</p>
+        <p>b) To any person or entity which is part of K2Lab, only to the extent necessary to fulfil any official purpose</p>
+        <p>c) To any person, entity or authority to whom disclosure is required under applicable laws or regulations.</p>
+        <p><strong>4. Security of Personal Data</strong></p>
+        <p>K2Lab will take reasonable steps to protect the personal data in our possession or under our control by making reasonable security arrangements to prevent unauthorized access, collection, use and disclosure of these personal data.</p>
+        <p><strong>5. Accuracy of Personal Data</strong></p>
+        <p>It is your obligation to ensure that all personal data submitted to us and retained by us are accurate, not misleading, updated and complete in all respects. Failure on your part to do so may result in our inability to provide you with the services you have requested. K2Lab staff shall not be responsible for any personal data submitted by you to us that may be inaccurate, misleading, incomplete or not updated.</p>
+        <p>By submitting any personal data relating to a third party (e.g. information of spouse, parents, guardians, etc.), you represent to us that you have obtained the consent of the third party to provide such data.</p>
+        <p><strong>6. Retention of Personal Data</strong></p>
+        <p>Any personal information provided will be retained either for the period of any business or ongoing relationship with you, or for the requisite retention periods as stipulated in any contractual arrangements or in accordance with any legal, regulatory, business or operational obligations, whichever is the longest. </p>
+        <p><strong>7. Access and Correction of Personal Data </strong></p>
+        <p>You may request for correction or updating of your personal data at any time after submission of your personal data to us.</p>
+        <p>If you wish to know about your personal data in our possession or under our control, or how your personal data has been used or to whom it has been disclosed, you may write in to us at <a href="mailto:hr@K2Labtutorial.com">hr@K2Labtutorial.com</a> (Attention: Data Protection Officer).</p>
+        <p><strong>8. Personal Data Protection Policy Updates</strong></p>
+        <p>K2Lab reserves the right to amend the terms of this policy from time to time.  If so, the updated policy will be made available at our website. The continued use of our services shall be deemed as your agreement and consent to be bound by our policy.<strong> </strong></p>
+
+    </div>
+
+
+
+</body>
+
+
+
+
+
+<footer id="footer" class="sticky-bottom footer-container"  role="contentinfo">
+    <div class="">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-2">
+          <!--Column1-->
+          <div class="footer-pad">
+            <p><a href="{% static 'privacy.html' %}">Privacy</a></p>
+            <!-- <ul class="list-unstyled">
+              <li><a href="#"></a></li>
+              <li><a href="#">Payment Center</a></li>
+              <li><a href="#">Contact Directory</a></li>
+              <li><a href="#">Forms</a></li>
+              <li><a href="#">News and Updates</a></li>
+              <li><a href="#">FAQs</a></li>
+            </ul> -->
+          </div>
+        </div>
+        <div class="col-3">
+          <!--Column1-->
+          <div class="footer-pad">
+            <p>Terms of Use</p>
+            <!-- <ul class="list-unstyled">
+              <li><a href="#">Website Tutorial</a></li>
+              <li><a href="#">Accessibility</a></li>
+              <li><a href="#">Disclaimer</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Webmaster</a></li>
+            </ul> -->
+          </div>
+        </div>
+        <div class="col-3">
+          <!--Column1-->
+          <div class="footer-pad">
+            <p>Sales and Refunds</p>
+            <!-- <ul class="list-unstyled">
+              <li><a href="#">Parks and Recreation</a></li>
+              <li><a href="#">Public Works</a></li>
+              <li><a href="#">Police Department</a></li>
+              <li><a href="#">Fire</a></li>
+              <li><a href="#">Mayor and City Council</a></li>
+              <li>
+                <a href="#"></a>
+              </li>
+            </ul> -->
+          </div>
+        </div>
+          <div class="col-2">
+              <p>Follow Us <a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a>&nbsp;<a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></p>
+              <!-- <ul class="social-network social-circle">
+               <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+               <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+              </ul>				 -->
+          </div>
+      </div>
+      
+      <div class="row">
+          <div class="col-sm-12 copy">
+              <p class="text-center">&copy; Copyright 2021 - K2Lab.  All rights reserved.</p>
+      </div>
+      
+      </div>
+  
+  
+    </div>
+    </div>
+</footer>
+  

@@ -1,0 +1,34 @@
+{% extends "header.html" %}
+{% block content %}
+
+<div align='center'><h2>{{ topic_name }}</h2></div>
+<p>
+    <form method="post" align='center'> {%csrf_token%}
+        <!-- <input type='submit' value='Start new exercise' name="start_preparing_exercise"/> -->
+        <button type="submit" class="btn btn-primary">Start new exercise now</button>
+    </form>
+<br><br>
+
+<main class="jumbotron">
+    <div class="card border-primary mb-3" style="max-width: 100%;"><div class="card-header">List of exercise(s) completed & result  </div>
+   
+    {% for values in exercises_list %}
+        <div class="row card-body">
+            <a href="{{ values.get_absolute_url }}" >Exercise -  {{ forloop.counter }} </a>
+        </div>
+    {% endfor %}
+</main>
+
+
+    {% endblock %}
+
+<br><br>
+{% block message %}
+        {% if messages %}
+            <div class="alert alert-dismissible alert-danger" align="center"></div>
+                {% for message in messages %}
+                    <strong>{{ message }}</strong>
+                {% endfor %}
+            </div>  
+        {% endif %}
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "header.html" %}
+
+{% block content %}
+<p>
+    <p>
+
+    <main class="container" style="max-width: 90%;">
+        <div class="card text-white bg-primary mb-3" style="max-width: 100%;"><div class="card-header">Review exercise - {{ exercise_question.0.question_id.topic_id }} <span class="badge badge-success">Result: {{result}}</span></div></div>
+    
+
+    <ul class="list-group"  >
+    {% for myquestion in exercise_question %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+                      Question {{ forloop.counter }}: {{ myquestion.question_id.question_desc }} <br><br>
+                      Your answer : 
+                        {% for myanswer in exercise_answer %}
+                            {% if myquestion.question_id.question_id == myanswer.question_id.question_id %}
+                                {% if myanswer.answer_id.answer_desc %}
+                                    {{ myanswer.answer_id.answer_desc }}
+                                {% else %}
+                                    {{ myanswer.answer_for_opentext }}
+                                {% endif %}
+
+                                {% if myanswer.flag == 1 %}
+                                &#10004;
+                                {% else %}
+                                &#10060; <span > Answer:<br>
+                                    {% for std in correct_answer%}
+                                        {% if myanswer.question_id.question_id.hex ==  std.0 %}
+                                        <span class="badge badge-success">{{ std.1  }}</span>
+                                        {% endif %}
+                                    {% endfor %}
+                                </span>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </li>
+    {% endfor %}
+    </ul>
+</main>
+
+    {% endblock %}
+
+{% block message %}
+        {% if messages %}
+            <div class="alert alert-dismissible alert-danger" align="center"></div>
+                {% for message in messages %}
+                    <strong>{{ message }}</strong>
+                {% endfor %}
+            </div>  
+        {% endif %}
+{% endblock %}
+
+

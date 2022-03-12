@@ -1,0 +1,87 @@
+{% extends "header.html" %}
+{% block content %}
+
+<style>
+    .login-form {
+        width: 340px;
+        margin: 50px auto;
+        font-size: 15px;
+    }
+    .login-form form {
+        margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .btn {        
+        font-size: 15px;
+        font-weight: bold;
+    }
+    </style>
+  
+<p><p>
+
+
+<div class="login-form">
+    <form action="{% url 'register' %}" method="post">{% csrf_token %}
+        <h2 class="text-center">Registration</h2>       
+        <p class="hint-text text-center">Create your account. It's free and only takes a minute.</p>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+            </div>
+            <input name="username" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope-o"></i></span>
+            </div>
+            <input name="text" type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fa fa-key"></i></span>
+            </div>
+            <input name="password1" type="password" class="form-control" placeholder="Password" aria-label="password" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fa fa-check"></i></span>
+            </div>
+            <input name="password2" type="password" class="form-control" placeholder="Confirm password" aria-label="password" aria-describedby="basic-addon1">
+        </div>
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Register now</button>
+        </div>
+         
+    </form>
+</div>
+
+{% endblock %}
+
+
+{% block message %}
+    {% if messages %}
+        <ul class="messages" align="center">
+    {% for message in messages %}
+        <li>{{ message }}</li>
+    {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}
+

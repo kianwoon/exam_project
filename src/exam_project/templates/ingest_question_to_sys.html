@@ -1,0 +1,126 @@
+{% extends "header.html" %}
+{% load static %}
+{% block content %}
+
+
+<style>
+  .topnav a:hover {
+      border-bottom: 1px solid red;
+  }
+  .full_container {
+
+      top: 0;
+      right: 0;
+      width: 100% !important;
+      left: 0;
+      z-index: 20;
+
+  }
+  .modal-backdrop {
+      /* bug fix - no overlay */    
+      display: none;    
+  }
+  .header-container, .body-container, .footer-container { 
+      max-width: 1080px; 
+      margin: 0 auto; 
+
+  }
+
+  body { 
+      max-width: 1080px; 
+      margin: 0 auto !important; 
+      float: none !important; 
+  }
+
+  /* Create four equal columns that floats next to each other */
+  .column {
+      float: left;
+      width: 33%;
+      padding: 5px;
+
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+      content: "";
+      display: table;
+      clear: both;
+  }
+ 
+
+</style>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" href="/static/cropper.css">
+<link rel="stylesheet" href="/static/cropper.min.css">
+
+
+<script>
+    function Next_page(page_no) {
+        document.getElementById("image").src='http://192.168.1.154:8080/media/P6Math026/pdf_img/page_9.jpg';
+        
+    }
+
+    function Previous_page() {
+        document.getElementById("image").src='http://192.168.1.154:8080/media/P6Math026/pdf_img/page_13.jpg';
+        
+    }
+</script>
+<p><p>
+       
+<h2 align="center">List of exam papers</h2>    
+<table class="table table-hover">
+    <thead>
+        <tr class="table-primary">
+          <th scope="col">No.</th>
+          <th scope="col">School name</th>
+          <th scope="col">Exam Paper</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for papers in exam_paper %}
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{papers.school_id}}</td>
+            <td>{{papers.class_id}}</td>
+            <td>{{papers.page_img_path}} <a href="{% url 'ingestion:extract_pdf' id=papers.id%}">View</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+<p><p><p><p></p>
+
+    <h2 align="center">Harvesting Exam Paper</h2>    
+    <div class="container" align="center">
+        <button class="btn btn-primary mt-3 not-visible" id="confirm-btn" onclick="Previous_page()">Previous</button>
+        <button class="btn btn-primary mt-3 not-visible" id="confirm-btn" onclick="Next_page()"> Next</button>
+    </div>
+    <div class="container mt-3">
+    <div id="alert-box"></div>
+
+    <div id="image-box" class="mb-3">
+        <img src="{{img_path}}/pdf_img/page_3.jpg" id="image" width="400px">
+    </div>
+
+    <button class="btn btn-primary mt-3 not-visible" id="confirm-btn">confirm</button>
+    </div>
+  <!-- Scripts -->
+    <script src="/static/cropper.js"></script>    
+    <script src="/static/main.js"></script>
+
+{% endblock %}
+
+{% block message %}
+    {% if messages %}
+        <ul class="messages" align="center">
+    {% for message in messages %}
+        <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+    {% endif %}
+{% endblock %}
+
+
+
+ 

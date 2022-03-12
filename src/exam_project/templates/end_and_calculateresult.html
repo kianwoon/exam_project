@@ -1,0 +1,34 @@
+{% extends "header.html" %}
+
+{% block content %}
+
+
+<main class="container">
+    <div class="align-items-center p-3 my-3 rounded shadow-sm text-center">
+        <div class="lh-1">
+            <h1 class="h1 mb-0 lh-1">** Singapore eLearning ** </h1>
+            <div class="mt-2">Ai based exam simulation - Start Exercise</div><br>
+        </div>
+    </div>
+</main>
+
+
+<h2>end and calculate result page</h2>
+
+
+
+    {% endblock %}
+
+<br><br>
+{% block message %}
+
+    {% if messages %}
+<ul class="messages" align="center">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+    {% endif %}
+
+{% endblock %}
+

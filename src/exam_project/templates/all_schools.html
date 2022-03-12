@@ -1,0 +1,118 @@
+{% extends "header.html" %}
+{% block content %}
+<style>
+  .topnav a:hover {
+      border-bottom: 1px solid red;
+  }
+  .full_container {
+
+      top: 0;
+      right: 0;
+      width: 100% !important;
+      left: 0;
+      z-index: 20;
+
+  }
+  .modal-backdrop {
+      /* bug fix - no overlay */    
+      display: none;    
+  }
+  .header-container, .body-container, .footer-container { 
+      max-width: 1080px; 
+      margin: 0 auto; 
+
+  }
+
+  body { 
+      max-width: 1080px; 
+      margin: 0 auto !important; 
+      float: none !important; 
+  }
+
+  /* Create four equal columns that floats next to each other */
+  .column {
+      float: left;
+      width: 33%;
+      padding: 5px;
+
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+      content: "";
+      display: table;
+      clear: both;
+  }
+ 
+
+</style>
+<p><p>
+<!--     
+    <form action='{% url 'sch:upload_csv' %}' enctype="multipart/form-data" method='post'>{% csrf_token %}
+        <div class="form-group">
+           
+            <div>
+                <input type="file" name="csv_file" id="csv_file" required="True" class="form-control">
+            </div>                 
+        </div>
+            <button type="submit"> <span>Upload</span> </button>
+    </form>
+
+    <h2 align='center'>All schools</h2><p><p> -->
+        
+<h2 align="center">{{grade|title}} schools ranking (Total: {{page_obj.paginator.count}})</h2>    
+<table class="table table-hover">
+    <thead>
+        <tr class="table-primary">
+          <th scope="col">Rank No.</th>
+          <th scope="col">School name</th>
+          <th scope="col">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for sch in page_obj %}
+          <tr>
+            <th scope="row">{{ forloop.counter|add:counter }}</th>
+            <td>{{sch.school_name}}</td>
+            <td>{{sch.school_rank}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+
+    <div align="center">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+<p>
+{% endblock %}
+
+
+{% block message %}
+
+    {% if messages %}
+<ul class="messages" align="center">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+    {% endif %}
+
+{% endblock %}
+
+
+
+ 
